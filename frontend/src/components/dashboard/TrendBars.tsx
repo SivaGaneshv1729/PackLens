@@ -1,0 +1,4 @@
+export default function TrendBars() {
+  const values = [42, 56, 48, 72, 63, 84, 78, 91, 75, 88, 94, 86];
+  return <div data-testid="compliance-trend-chart" className="flex h-44 items-end gap-2 px-1 pt-5">{values.map((value, index) => <div key={index} className="group flex h-full flex-1 flex-col justify-end gap-2"><div className="relative flex-1"><div className="absolute inset-x-0 bottom-0 rounded-t-lg bg-blue-500/80 transition-all duration-500 group-hover:bg-blue-600" style={{ height: `${value}%` }}><span className="absolute -top-6 left-1/2 hidden -translate-x-1/2 text-[10px] font-semibold text-blue-700 group-hover:block">{value}%</span></div></div><span className="text-center text-[10px] text-slate-400">{["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"][index]}</span></div>)}</div>;
+}

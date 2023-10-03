@@ -1,0 +1,10 @@
+import { Check, CircleAlert, CircleX, Minus } from "lucide-react";
+import type { ComplianceCheck } from "@/types/compliance";
+import { StatusBadge } from "@/components/common/StatusBadge";
+
+export default function Checklist({ checks, compact = false }: { checks: ComplianceCheck[]; compact?: boolean }) {
+  return <div data-testid="compliance-checklist" className="divide-y divide-slate-100">{checks.map((check) => {
+    const Icon = check.status === "passed" ? Check : check.status === "failed" ? CircleX : check.status === "warning" ? CircleAlert : Minus;
+    return <div data-testid={`check-row-${check.id}`} key={check.id} className={`grid gap-4 px-5 py-4 sm:grid-cols-[1.35fr_0.85fr_1fr] ${compact ? "items-center" : "items-start"}`}><div className="flex items-start gap-3"><span className={`mt-0.5 rounded-full p-1.5 ${check.status === "passed" ? "bg-emerald-50 text-emerald-600" : check.status === "failed" ? "bg-rose-50 text-rose-600" : check.status === "warning" ? "bg-amber-50 text-amber-600" : "bg-slate-100 text-slate-500"}`}><Icon className="size-3.5" /></span><div><p data-testid={`check-requirement-${check.id}`} className="text-sm font-semibold text-slate-800">{check.requirement}</p><p data-testid={`check-reason-${check.id}`} className="mt-1 text-xs leading-5 text-slate-500">{check.applicable ? check.reason ?? "No additional details returned." : "This requirement was marked not applicable by the analysis."}</p></div></div><div><StatusBadge status={check.status} testId={`check-status-${check.id}`} /></div><div className="text-xs leading-5 text-slate-600"><span className="font-semibold text-slate-400">Detected: </span><span data-testid={`check-value-${check.id}`}>{check.detectedValue ?? "Not provided"}</span>{check.recommendation && <p className="mt-1 text-amber-700"><span className="font-semibold">Next: </span>{check.recommendation}</p>}</div></div>;
+  })}</div>;
+}
