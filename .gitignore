@@ -18,3 +18,7 @@ venv/
 memory/
 test_reports/
 tests/test-results/
+powershell.cmd
+**/powershell.cmd
+backend/uploads/*
+!backend/uploads/.gitkeep

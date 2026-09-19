@@ -312,6 +312,28 @@
   resolved "https://assets.emergent.sh/npm/emergentbase-visual-edits-1.0.14.tgz"
   integrity sha512-+TyJ+YAJ1xmd4MrobR9wD5J8mUF/AH8YRTsgwsW4OC/b9Od59IV9J8YiWA5w3hGXDxcIrtH3eOWbi6f1VGEa2Q==
 
+"@emnapi/core@^1.7.1":
+  version "1.11.1"
+  resolved "https://registry.npmjs.org/@emnapi/core/-/core-1.11.1.tgz"
+  integrity sha512-RSvbQmHzdKzNsLYa/wHrbc3KN4sYLKAdPZxqiM2HATqv/SBk2/ENSHpvXGaLOMcsAyz0poEGqkmmKYG3OWiJEQ==
+  dependencies:
+    "@emnapi/wasi-threads" "1.2.2"
+    tslib "^2.4.0"
+
+"@emnapi/runtime@^1.7.1":
+  version "1.11.1"
+  resolved "https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.11.1.tgz"
+  integrity sha512-vgj7R3y3Wgx24IQaGPA/R6YFXLHVMOZ0uVEyIQPaWs+rd1AzfEMXlAC22FYwO1XkKR6NPsq7mUandH8oIRdZFw==
+  dependencies:
+    tslib "^2.4.0"
+
+"@emnapi/wasi-threads@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.2.tgz"
+  integrity sha512-c95qOXkHdydNKhscBTebqEC1CVAZpyqOfVfBzQ1qgzyl3gfeldUjIggDbIZgDKsHLgnsM+igH7TJ/eAasaVuMA==
+  dependencies:
+    tslib "^2.4.0"
+
 "@floating-ui/core@^1.8.0":
   version "1.8.0"
   resolved "https://registry.npmjs.org/@floating-ui/core/-/core-1.8.0.tgz"
@@ -624,6 +646,13 @@
     fast-glob "^3.3.3"
     minimatch "^10.0.1"
     path-browserify "^1.0.1"
+
+"@tybys/wasm-util@^0.10.3":
+  version "0.10.3"
+  resolved "https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.3.tgz"
+  integrity sha512-F3fo1MYrRJYL3zER0OUOmkutjr1Vp23m7OsSgp7nq4SP6OqX6C/56XFIPAl5bt3zaBRjmW7SGz3u/6LwFpYcOg==
+  dependencies:
+    tslib "^2.4.0"
 
 "@types/chai@^5.2.2":
   version "5.2.3"

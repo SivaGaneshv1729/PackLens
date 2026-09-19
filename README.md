@@ -30,6 +30,49 @@ The system is broken down into two main services:
 - **AI Integration**: Powered by the **Google GenAI SDK** (`gemini-2.5-flash`). The backend parses the uploaded image, validates the data, and returns a detailed compliance report.
 - Provides endpoints for uploading images (`/api/compliance/analyze`), listing history (`/api/compliance/results`), and fetching dashboard metrics (`/api/compliance/dashboard`).
 
+## 📁 Project Structure
+
+```text
+PackLens/
+├── backend/                  # FastAPI Python backend service
+│   ├── lib/                  # Core processing & AI integration logic
+│   │   └── analyzer.py       # Gemini Vision AI image analysis & compliance checking
+│   ├── models/               # Pydantic data schemas
+│   │   └── compliance.py     # Data models for checks, packages, & results
+│   ├── routers/              # API route definitions
+│   │   └── compliance.py     # Endpoints for analyze, results, & dashboard stats
+│   ├── tests/                # Pytest test files & fixtures
+│   ├── uploads/              # Uploaded package image storage
+│   ├── .env                  # Environment variables (API keys, CORS, etc.)
+│   ├── pytest.ini            # Pytest configuration
+│   ├── requirements.txt      # Python dependencies
+│   └── server.py             # Main FastAPI application entry point
+│
+├── frontend/                 # React 19 + TypeScript + Vite frontend app
+│   ├── public/               # Static assets & public files
+│   ├── src/                  # Application source code
+│   │   ├── components/       # UI components & shadcn design elements
+│   │   ├── lib/              # API helpers, utilities, & custom icons
+│   │   ├── pages/            # Page components (Dashboard, Upload, Results, Reports, etc.)
+│   │   ├── services/         # API client hooks & services
+│   │   ├── types/            # TypeScript type definitions
+│   │   ├── App.tsx           # Main App layout & route configuration
+│   │   ├── index.css         # Global Tailwind CSS styles
+│   │   └── main.tsx          # React application root entry point
+│   ├── package.json          # Node.js dependencies & npm scripts
+│   ├── tsconfig.json         # TypeScript configuration
+│   └── vite.config.ts        # Vite configuration & dev server backend proxy
+│
+├── tests/                    # End-to-end (E2E) Playwright test suites
+│   ├── e2e/                  # Test spec files
+│   ├── fixtures/             # Test helpers & test fixtures
+│   └── playwright.config.ts  # Playwright configuration
+│
+├── design_guidelines.json    # Design tokens & UX principles
+├── README.md                 # Project documentation
+└── TEMPLATE.md               # Design specification template
+```
+
 ## 🔍 Compliance Checks Performed
 
 The AI automatically checks for the following 8 metrology rules:
