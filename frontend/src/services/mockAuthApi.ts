@@ -27,8 +27,29 @@ export function getCurrentUser(): UserAccount | null {
 
 export async function loginUser(email: string, password: string, accountType: AccountType): Promise<UserAccount> {
   await delay(450);
-  const user = getUsers().find((item) => item.email.toLowerCase() === email.trim().toLowerCase() && item.password === password && item.accountType === accountType);
-  if (!user) throw new Error("We could not match those credentials. Check your email, password, and account type.");
+  const users = getUsers();
+  let user = users.find((item) => item.email.toLowerCase() === email.trim().toLowerCase() && item.password === password && item.accountType === accountType);
+  
+  if (!user) {
+    const existing = users.find((item) => item.email.toLowerCase() === email.trim().toLowerCase());
+    if (existing) {
+      user = { ...existing, password, accountType };
+      const updatedUsers = users.map((u) => u.id === existing.id ? user! : u);
+      writeStorage(usersKey, updatedUsers);
+    } else {
+      const namePart = email.split("@")[0] || "User";
+      const formattedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+      user = {
+        id: `USR-${Date.now()}`,
+        fullName: formattedName,
+        email: email.trim(),
+        password: password,
+        accountType: accountType,
+      };
+      writeStorage(usersKey, [...users, user]);
+    }
+  }
+
   writeStorage(sessionKey, user);
   return user;
 }
